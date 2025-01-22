@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/cenario-teste.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Cenas/PlayerCharacter.gd" type="Script" id=2]
 [ext_resource path="res://Assets/checker-texture.png" type="Texture" id=3]
 
 [sub_resource type="SpatialMaterial" id=3]
@@ -38,6 +39,7 @@ transform = Transform( 0.787495, -0.183535, -0.588359, 0.616321, 0.234509, 0.751
 
 [node name="PlayerCharacter" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0575074, 0.315101, 0.866329 )
+script = ExtResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="PlayerCharacter"]
 transform = Transform( 0.242016, 0, 0, 0, 0.242016, 0, 0, 0, 0.242016, 0, 0, 0 )
