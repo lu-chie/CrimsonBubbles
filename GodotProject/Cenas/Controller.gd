@@ -1,25 +1,24 @@
 extends Node
 
-
-# chamando o kinematic body q é o model
+# Chamando o kinematic body que é o model
 onready var model = $".."
+
+# Velocidades
+export var walk_speed: float = 5.0  # Velocidade ao caminhar
+export var run_speed: float = 10.0  # Velocidade ao correr
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-
-# funcao d update movement que ta sendo chamada em call, todo movimento é processado aca
-# feito assim pra gente saber que se o problema é de movimento, ajeitar aqui
-# se o problema for de parametro, ajeitar em model
-#se o problema for de render, ajeitar em view
-
+# Função de update movement que é chamada constantemente. Todo movimento é processado aqui.
+# Feito assim para separar responsabilidades:
 func update_movement(delta):
-	
 	# Reseta a velocidade horizontal
 	model.velocity.x = 0
 	model.velocity.z = 0
 
+	# Verifica as teclas de direção
 	if Input.is_action_pressed("ui_up"):
 		model.velocity.z -= 1
 	if Input.is_action_pressed("ui_down"):
@@ -29,16 +28,20 @@ func update_movement(delta):
 	if Input.is_action_pressed("ui_right"):
 		model.velocity.x += 1
 
-# aí antes esse codigo verificava as velocidades d x e de z, mas tem essa funcao legth que verifica o tamanho do vetor
-# aí se o vetor for maior q (0.0,0.0,0.0) ele ja sabe q o bicho ta se movendo
-# aí normaliza o vetor de velocidade (pra ter uma direção) e aplica ele multiplicado pela velocidade
+	# Verifica se o personagem está correndo (Shift pressionado)
+	var current_speed = walk_speed
+	if Input.is_action_pressed("ui_shift"):  # Shift pressionado
+		current_speed = run_speed
 
+	# Normaliza o vetor de velocidade (para direção) e aplica a velocidade
 	if model.velocity.length() > 0:
-		model.velocity = model.velocity.normalized()
-		
+		model.velocity = model.velocity.normalized() * current_speed
+
+	# Aplica a gravidade se o personagem não estiver no chão
 	if not model.is_on_floor():
 		model.velocity.y += model.gravity * delta
 	else:
 		model.velocity.y = 0
-	
+
+	# Move o personagem
 	model.move_and_slide(model.velocity, Vector3.UP)

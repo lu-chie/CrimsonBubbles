@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/cenario-teste.obj" type="ArrayMesh" id=1]
-[ext_resource path="res://Cenas/Player.gd" type="Script" id=2]
 [ext_resource path="res://Assets/checker-texture.png" type="Texture" id=3]
 [ext_resource path="res://Cenas/level-basico.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Cenas/Model.gd" type="Script" id=5]
+[ext_resource path="res://Cenas/C_Call.gd" type="Script" id=5]
 [ext_resource path="res://Cenas/Controller.gd" type="Script" id=6]
 
 [sub_resource type="SpatialMaterial" id=3]
@@ -39,7 +38,7 @@ transform = Transform( 0.787495, -0.183535, -0.588359, 0.616321, 0.234509, 0.751
 
 [node name="PlayerCharacter" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0575074, 1.12577, 1.62665 )
-script = ExtResource( 2 )
+script = ExtResource( 6 )
 
 [node name="View" type="MeshInstance" parent="PlayerCharacter"]
 transform = Transform( 0.242016, 0, 0, 0, 0.242016, 0, 0, 0, 0.242016, 0, 0, 0 )
