@@ -27,8 +27,7 @@ func _process(delta):
 
 func adjust_camera_distance(delta):
 	
-	var distancia = cam_collider.collision_point.distance_to(global_transform.origin)
-	
+	var distancia = cam_collider.collision_point()
 	# Verifica se o SpringArm está colidindo com algo
 	if cam_collider.is_colliding():
 		print(distancia)
