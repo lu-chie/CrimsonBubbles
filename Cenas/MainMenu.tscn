@@ -1,0 +1,8 @@
+[gd_scene format=2]
+
+[node name="Button" type="Button"]
+margin_left = 752.0
+margin_top = 137.0
+margin_right = 910.0
+margin_bottom = 195.0
+text = "iniciar"
