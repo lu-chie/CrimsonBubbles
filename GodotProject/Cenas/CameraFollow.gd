@@ -1,18 +1,39 @@
-extends Camera
+extends Spatial
 
-# Referência para o jogador
-onready var player = $"/root/Path/To/.."
+onready var camera = $Camera
+onready var cam_collider = $SpringArm
 
-# Velocidade de suavização do movimento da câmera
-export var smoothing_speed = 5.0
+export(float) var max_length = 10.0
+export(float) var min_length = 2.0
+export(float) var smooth_speed = 0.1
 
-# Posição relativa desejada da câmera em relação ao jogador
-export var offset = Vector3(0, 5, -10)
+var target_position: Vector3
+
+func focus(delta):
+
+	for area in get_tree().get_nodes_in_group("focus_areas"):
+		if area.is_player_in == true:  # Verifica se o jogador está dentro da área
+			#print(area.name)
+			target_position = area.global_transform.origin
+			position = target_position
+			break  # Sai do loop após encontrar a primeira área válida
+
+func _ready():
+	pass
 
 func _process(delta):
-	if player:
-		# Posição alvo da câmera
-		var target_position = player.global_transform.origin + offset
-		# Interpolação suave para mover a câmera
-		global_transform.origin = global_transform.origin.linear_interpolate(target_position, smoothing_speed * delta)
+	
+	focus(delta)
 
+func adjust_camera_distance(delta):
+	
+	var distancia = cam_collider.collision_point.distance_to(global_transform.origin)
+	
+	# Verifica se o SpringArm está colidindo com algo
+	if cam_collider.is_colliding():
+		print(distancia)
+		# Reduz a distância da câmera até a distância mínima
+		cam_collider.spring_length = max(cam_collider.spring_length - smooth_speed * delta, min_length)
+	else:
+		# Aumenta a distância da câmera até a distância máxima
+		cam_collider.spring_length = min(cam_collider.spring_length + smooth_speed * delta, max_length)

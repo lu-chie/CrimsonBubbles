@@ -45,3 +45,7 @@ func update_movement(delta):
 
 	# Move o personagem
 	model.move_and_slide(model.velocity, Vector3.UP)
+	
+func is_on_area():
+	
+	pass

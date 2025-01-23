@@ -10,19 +10,19 @@ points = PoolVector3Array( -0.972729, 0.170391, -0.632762, 0.991375, 0.00714278,
 
 [node name="3DCharacter" type="Spatial"]
 
-[node name="Model" type="KinematicBody" parent="."]
+[node name="Player" type="KinematicBody" parent="."]
 script = ExtResource( 2 )
 speed = 10000.0
 gravity = -5.0
 
-[node name="View" type="MeshInstance" parent="Model"]
+[node name="View" type="MeshInstance" parent="Player"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../..")
 
-[node name="Physics" type="CollisionShape" parent="Model"]
+[node name="Physics" type="CollisionShape" parent="Player"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 2 )
 
-[node name="Controller" type="Node" parent="Model"]
+[node name="Controller" type="Node" parent="Player"]
 script = ExtResource( 3 )

@@ -20,10 +20,8 @@ points = PoolVector3Array( 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1,
 visible = false
 
 [node name="StaticBody" type="StaticBody" parent="."]
-visible = false
 
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
-visible = false
 mesh = ExtResource( 1 )
 material/0 = SubResource( 3 )
 
