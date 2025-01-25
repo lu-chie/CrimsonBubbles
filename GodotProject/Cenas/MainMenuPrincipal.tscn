@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/fontes/FancyCard.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/fontes/Newsreader font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Assets/fontes/FancyCardsemcruzveyr.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Cenas/MenuController.gd" type="Script" id=4]
 
 [node name="MainMenuPrincipal" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 4 )
 
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -15,10 +17,10 @@ anchor_bottom = 1.0
 [node name="VBoxContainer" type="VBoxContainer" parent="Background"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -596.0
-margin_top = -3.0
-margin_right = -259.0
-margin_bottom = 86.0
+margin_left = -583.0
+margin_top = -1.0
+margin_right = -109.0
+margin_bottom = 115.0
 rect_scale = Vector2( 1.19247, 1.14885 )
 
 [node name="Label" type="Label" parent="Background/VBoxContainer"]
@@ -30,10 +32,10 @@ text = "Crimson Bubbles"
 [node name="VBoxContainer2" type="VBoxContainer" parent="Background"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -446.0
-margin_top = 115.0
-margin_right = -175.0
-margin_bottom = 196.0
+margin_left = -333.0
+margin_top = 111.0
+margin_right = -61.9999
+margin_bottom = 192.0
 rect_scale = Vector2( 1.13703, 0.923952 )
 
 [node name="Label" type="Label" parent="Background/VBoxContainer2"]
@@ -47,35 +49,38 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -369.0
-margin_top = -70.0
-margin_right = -176.0
-margin_bottom = 210.0
+margin_left = -232.0
+margin_top = -76.0
+margin_right = -39.0
+margin_bottom = 242.0
 rect_scale = Vector2( 0.817228, 0.868201 )
+custom_constants/separation = 30
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="IniciarButton" type="Button" parent="VBoxContainer"]
 margin_right = 193.0
 margin_bottom = 57.0
+mouse_default_cursor_shape = 3
+size_flags_stretch_ratio = 1.47
 custom_fonts/font = ExtResource( 2 )
 text = "Iniciar"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
-margin_top = 61.0
+[node name="ControlesButton" type="Button" parent="VBoxContainer"]
+margin_top = 87.0
 margin_right = 193.0
-margin_bottom = 118.0
+margin_bottom = 144.0
 custom_fonts/font = ExtResource( 2 )
 text = "Controles"
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
-margin_top = 122.0
+[node name="CreditosButton" type="Button" parent="VBoxContainer"]
+margin_top = 174.0
 margin_right = 193.0
-margin_bottom = 179.0
+margin_bottom = 231.0
 custom_fonts/font = ExtResource( 2 )
 text = "Créditos"
 
-[node name="Button4" type="Button" parent="VBoxContainer"]
-margin_top = 183.0
+[node name="SairButton" type="Button" parent="VBoxContainer"]
+margin_top = 261.0
 margin_right = 193.0
-margin_bottom = 240.0
+margin_bottom = 318.0
 custom_fonts/font = ExtResource( 2 )
 text = "Sair"

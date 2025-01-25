@@ -2,6 +2,8 @@ extends KinematicBody
 
 # Variáveis
 export var velocidade = 3.0
+export var area_aleatoria_min = Vector3(-100, 0, -100)  # Posição mínima para o teleporte
+export var area_aleatoria_max = Vector3(100, 0, 100)  # Posição máxima para o teleporte
 var player_detectado = false
 var player_posicao = Vector3.ZERO
 
@@ -16,15 +18,24 @@ func _ready():
 	mesh.visible = false
 	# Conecta o sinal de detecção
 	area.connect("body_entered", self, "_on_area_entered")
+	area.connect("body_exited", self, "_on_area_exited")
 
 # Função chamada quando o jogador entra na área de detecção
 func _on_area_entered(body):
-	if body.name == "..":  # Certifique-se de que o nó do jogador se chama "Player"
+	if body.name == "3DCharacter":  # Certifique-se de que o nó do jogador se chama "3DCharacter"
 		player_detectado = true
 		mesh.visible = true  # Torna o inimigo visível
 		player_posicao = body.global_transform.origin
-		#if audio:
-		#	audio.play()  # Reproduz o som ao aparecer
+		# Se quiser tocar um som ao aparecer
+		# if audio:
+		#    audio.play()
+
+# Função chamada quando o jogador sai da área de detecção
+func _on_area_exited(body):
+	if body.name == "3DCharacter":  # Quando o jogador sai da área
+		player_detectado = false
+		mesh.visible = false  # Torna o inimigo invisível
+		teleport_randomly()  # Teleporta o inimigo para uma posição aleatória
 
 # Movimento do inimigo
 func _physics_process(delta):
@@ -33,3 +44,13 @@ func _physics_process(delta):
 		var direcao = (player_posicao - global_transform.origin).normalized()
 		var movimento = direcao * velocidade
 		move_and_slide(movimento)
+
+# Função para teleportar o inimigo para uma posição aleatória
+func teleport_randomly():
+	var random_position = Vector3(
+		rand_range(area_aleatoria_min.x, area_aleatoria_max.x),
+		0,  # Assume que o inimigo deve ficar no chão (ajuste conforme a altura)
+		rand_range(area_aleatoria_min.z, area_aleatoria_max.z)
+	)
+	global_transform.origin = random_position
+
