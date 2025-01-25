@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Cenas/3DCharacter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Cenas/Quarto.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Cenas/Detector.gd" type="Script" id=5]
 [ext_resource path="res://Cenas/Door.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Cenas/Hall.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Cenas/Enemyscene.tscn" type="PackedScene" id=8]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 6.82337, 3.26384, 5.51975 )
@@ -118,6 +119,9 @@ transform = Transform( -0.985485, -0.169762, 0, 0.169762, -0.985485, 0, 0, 0, 1,
 [node name="Area2" parent="." instance=ExtResource( 6 )]
 transform = Transform( 4.29377, 0, 0.179662, 0, 4.29752, 0, -0.138567, 0, 3.31162, -43.8619, 0.129737, -7.72996 )
 spawn_point_path = NodePath("../correr_entrada")
+
+[node name="Enemy" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.23698, 1.85607, 8.70492 )
 
 [connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="Area" method="_on_Area_body_exited"]

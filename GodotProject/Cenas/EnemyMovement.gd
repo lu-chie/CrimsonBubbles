@@ -21,8 +21,9 @@ func _ready():
 	area.connect("body_exited", self, "_on_area_exited")
 
 # Função chamada quando o jogador entra na área de detecção
-func _on_area_entered(body):
-	if body.name == "3DCharacter":  # Certifique-se de que o nó do jogador se chama "3DCharacter"
+func _on_area_entered(body:Node):
+	var bodyname = body.name
+	if body.name == "Player":  # Certifique-se de que o nó do jogador se chama "3DCharacter"
 		player_detectado = true
 		mesh.visible = true  # Torna o inimigo visível
 		player_posicao = body.global_transform.origin
@@ -32,7 +33,7 @@ func _on_area_entered(body):
 
 # Função chamada quando o jogador sai da área de detecção
 func _on_area_exited(body):
-	if body.name == "3DCharacter":  # Quando o jogador sai da área
+	if body.name == "Player":  # Quando o jogador sai da área
 		player_detectado = false
 		mesh.visible = false  # Torna o inimigo invisível
 		teleport_randomly()  # Teleporta o inimigo para uma posição aleatória
@@ -54,3 +55,11 @@ func teleport_randomly():
 	)
 	global_transform.origin = random_position
 
+
+
+func _on_area_area_entered(area):
+	pass # Replace with function body.
+
+
+func _on_area_area_exited(area):
+	pass # Replace with function body.
