@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/quarto.obj-8963418614d879978214baebd0e358d2.mesh"
+
+[deps]
+
+files=[ "res://.import/quarto.obj-8963418614d879978214baebd0e358d2.mesh" ]
+
+source_file="res://Assets/quarto.obj"
+dest_files=[ "res://.import/quarto.obj-8963418614d879978214baebd0e358d2.mesh", "res://.import/quarto.obj-8963418614d879978214baebd0e358d2.mesh" ]
+
+[params]
+
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh_flags=4286
+generate_tangents=true
+vertex_cache_optimization=true
+octahedral_compression=true

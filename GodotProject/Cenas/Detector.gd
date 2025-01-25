@@ -29,3 +29,6 @@ func _on_Area_body_exited(body):
 	if body is KinematicBody and body.name == "Player":  # Verifica se é o jogador
 		#print(body.name + " saiu da área: " + name)
 		is_player_in = false
+
+
+
