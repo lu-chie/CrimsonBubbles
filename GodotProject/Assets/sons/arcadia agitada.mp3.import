@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/arcadia agitada.mp3-b25daebe4d79983bba7bdb0fb696a31f.mp3str"
+
+[deps]
+
+source_file="res://Assets/sons/arcadia agitada.mp3"
+dest_files=[ "res://.import/arcadia agitada.mp3-b25daebe4d79983bba7bdb0fb696a31f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/arcadia calma.mp3-ebf198a7cdcef1d3834827318455828d.mp3str"
+
+[deps]
+
+source_file="res://Assets/sons/arcadia calma.mp3"
+dest_files=[ "res://.import/arcadia calma.mp3-ebf198a7cdcef1d3834827318455828d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
