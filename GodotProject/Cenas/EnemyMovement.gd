@@ -1,7 +1,7 @@
 extends KinematicBody
 
 # Variáveis
-export var velocidade = 3.0
+export var velocidade = 10.0
 export var area_aleatoria_min = Vector3(-100, 0, -100)  # Posição mínima para o teleporte
 export var area_aleatoria_max = Vector3(100, 0, 100)  # Posição máxima para o teleporte
 var player_detectado = false
@@ -10,7 +10,7 @@ var player_posicao = Vector3.ZERO
 # Referências
 onready var mesh = $MeshInstance
 onready var area = $Area
-# onready var audio = $AudioStreamPlayer3D
+onready var audio = $AudioStreamPlayer3D
 
 # Chamado quando o nó entra na cena
 func _ready():
@@ -28,8 +28,8 @@ func _on_area_entered(body:Node):
 		mesh.visible = true  # Torna o inimigo visível
 		player_posicao = body.global_transform.origin
 		# Se quiser tocar um som ao aparecer
-		# if audio:
-		#    audio.play()
+		if audio:
+		   audio.play()
 
 # Função chamada quando o jogador sai da área de detecção
 func _on_area_exited(body):
@@ -37,6 +37,8 @@ func _on_area_exited(body):
 		player_detectado = false
 		mesh.visible = false  # Torna o inimigo invisível
 		teleport_randomly()  # Teleporta o inimigo para uma posição aleatória
+		if audio and audio.playing:
+			audio.stop()
 
 # Movimento do inimigo
 func _physics_process(delta):

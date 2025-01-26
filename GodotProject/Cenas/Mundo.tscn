@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Cenas/3DCharacter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Cenas/Quarto.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Cenas/Door.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Cenas/Hall.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Cenas/Enemyscene.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/sons/arcadia agitada.mp3" type="AudioStream" id=9]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 6.82337, 3.26384, 5.51975 )
@@ -122,6 +123,10 @@ spawn_point_path = NodePath("../correr_entrada")
 
 [node name="Enemy" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.23698, 1.85607, 8.70492 )
+velocidade = 10.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enemy"]
+stream = ExtResource( 9 )
 
 [connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="Area" method="_on_Area_body_exited"]

@@ -1,26 +1,39 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Crimson_Bubble_logo_branco.png" type="Texture" id=1]
 [ext_resource path="res://Assets/fontes/Newsreader font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Background.png" type="Texture" id=3]
 [ext_resource path="res://Cenas/MenuController.gd" type="Script" id=4]
+[ext_resource path="res://Assets/sons/arcadia calma.mp3" type="AudioStream" id=5]
 
 [node name="MainMenuPrincipal" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 227.0
+margin_bottom = 122.0
+rect_scale = Vector2( 0.822924, 0.842938 )
 script = ExtResource( 4 )
 
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -2.0
+margin_top = -2.0
+margin_right = 253.0
+margin_bottom = 147.0
+rect_scale = Vector2( 0.884727, 0.854924 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 7
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -402.0
-margin_top = 14.0
-margin_right = 3176.0
-margin_bottom = 2147.0
-rect_scale = Vector2( 0.109006, 0.118758 )
+margin_left = -685.129
+margin_top = 42.581
+margin_right = 2892.87
+margin_bottom = 2175.58
+rect_scale = Vector2( 0.15436, 0.160472 )
 
 [node name="TextureRect" type="TextureRect" parent="Background/VBoxContainer"]
 margin_right = 3578.0
@@ -32,38 +45,49 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -231.0
-margin_top = 1.00006
-margin_right = -38.0001
-margin_bottom = 319.0
+margin_left = -305.591
+margin_top = 18.6246
+margin_right = -112.591
+margin_bottom = 336.625
 rect_scale = Vector2( 0.817228, 0.868201 )
 custom_constants/separation = 30
 
 [node name="IniciarButton" type="Button" parent="VBoxContainer"]
+modulate = Color( 1, 0.0666667, 0.0941176, 1 )
 margin_right = 193.0
 margin_bottom = 57.0
 mouse_default_cursor_shape = 3
 size_flags_stretch_ratio = 1.47
+custom_colors/icon_color_pressed = Color( 0.317647, 0.0745098, 0.243137, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "Iniciar"
 
 [node name="ControlesButton" type="Button" parent="VBoxContainer"]
+modulate = Color( 1, 0.0666667, 0.0941176, 1 )
 margin_top = 87.0
 margin_right = 193.0
 margin_bottom = 144.0
+custom_colors/icon_color_pressed = Color( 0.317647, 0.0745098, 0.243137, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "Controles"
 
 [node name="CreditosButton" type="Button" parent="VBoxContainer"]
+modulate = Color( 1, 0.0666667, 0.0941176, 1 )
 margin_top = 174.0
 margin_right = 193.0
 margin_bottom = 231.0
+custom_colors/icon_color_pressed = Color( 0.317647, 0.0745098, 0.243137, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "Créditos"
 
 [node name="SairButton" type="Button" parent="VBoxContainer"]
+modulate = Color( 1, 0.0666667, 0.0941176, 1 )
 margin_top = 261.0
 margin_right = 193.0
 margin_bottom = 318.0
+custom_colors/icon_color_pressed = Color( 0.317647, 0.0745098, 0.243137, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "Sair"
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
