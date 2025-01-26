@@ -12,7 +12,7 @@ func _ready():
 # Função para trocar a cena
 func _on_iniciar_button_pressed():
 	print("Botão Iniciar pressionado! Trocando de cena...")
-	get_tree().change_scene("res://cenas/movimento-teste.tscn")
+	get_tree().change_scene("res://Cenas/Mundo.tscn")
 
 # Função para sair do jogo
 func _on_sair_button_pressed():
