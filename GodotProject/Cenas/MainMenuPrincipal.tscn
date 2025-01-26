@@ -89,5 +89,9 @@ custom_colors/icon_color_pressed = Color( 0.317647, 0.0745098, 0.243137, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "Sair"
 
+<<<<<<< HEAD
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+=======
+[node name="Spatial" type="Spatial" parent="."]
+>>>>>>> b50de89dfd6da1785fc52841fb0a6e69225e0da4

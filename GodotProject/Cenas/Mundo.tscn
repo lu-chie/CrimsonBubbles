@@ -7,103 +7,118 @@
 [ext_resource path="res://Cenas/Detector.gd" type="Script" id=5]
 [ext_resource path="res://Cenas/Door.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Cenas/Hall.tscn" type="PackedScene" id=7]
+<<<<<<< HEAD
 [ext_resource path="res://Cenas/Enemyscene.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/sons/arcadia agitada.mp3" type="AudioStream" id=9]
+=======
+[ext_resource path="res://Cenas/EnemyCharacter.tscn" type="PackedScene" id=8]
+>>>>>>> b50de89dfd6da1785fc52841fb0a6e69225e0da4
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 6.82337, 3.26384, 5.51975 )
+extents = Vector3( 6.82337, 9.077, 5.51975 )
 
 [sub_resource type="Environment" id=2]
+background_mode = 1
 ambient_light_color = Color( 0.239216, 0.603922, 0.466667, 1 )
 ambient_light_energy = 0.5
 fog_enabled = true
 fog_color = Color( 0.623529, 0.501961, 0.701961, 1 )
 fog_sun_color = Color( 0.894118, 0.305882, 0.541176, 1 )
-fog_depth_begin = 30.0
+fog_depth_begin = 20.0
 fog_height_min = 0.0
 fog_height_curve = 4.59479
 
 [node name="Mundo" type="Spatial"]
 
 [node name="3DCharacter" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.777364, 0, 0, 0, 0.777364, 0, 0, 0, 0.777364, -0.852028, 1.62473, 19.6956 )
+transform = Transform( 0.480984, 0, 0, 0, 0.480984, 0, 0, 0, 0.480984, -3.89993, 2.8183, 10.703 )
 
 [node name="Quarto" parent="." instance=ExtResource( 2 )]
 transform = Transform( 2.66087, 0, 0, 0, 2.66087, 0, 0, 0, 2.66087, -44.9106, 0, 0 )
 
 [node name="Corredor" parent="." instance=ExtResource( 3 )]
-transform = Transform( 3.59673, 0, 0, 0, 3.59673, 0, 0, 0, 3.59673, -3.78147, 0, -53.4713 )
+transform = Transform( 4.52228, 0, 0, 0, 4.52228, 0, 0, 0, 4.52228, -3.78949, 0.0036005, -78.6584 )
 
 [node name="pivot" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.707107, -0.499999, 0.5, 0, 0.707106, 0.707107, -0.707107, -0.499999, 0.5, 0, 19.3143, 12.0365 )
 
 [node name="Area" type="Area" parent="." groups=["focus_areas"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3529, 4.00803, -58.9242 )
+transform = Transform( 1, 0, 0, 0, 0.831958, 0, 0, 0, 1, 3.12789, 15.5046, -74.2093 )
 script = ExtResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.793922, 0.0812745, 0.740405 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.20661, -6.69381, -7.82509, -10.3429 )
 shape = SubResource( 1 )
 
 [node name="Area5" type="Area" parent="." groups=["focus_areas"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3529, 3.9801, -47.8599 )
+transform = Transform( 1, 0, 0, 0, 0.831958, 0, 0, 0, 1, 3.12789, 14.3762, -63.413 )
 script = ExtResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area5"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.793922, 0.0812745, 0.740406 )
-shape = SubResource( 1 )
-
-[node name="Area3" type="Area" parent="." groups=["focus_areas"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -45.0582, 1.6556, 6.90182 )
-script = ExtResource( 5 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Area3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.793922, 0.0812745, 0.740405 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.20661, -6.69381, -9.22067, -7.65298 )
 shape = SubResource( 1 )
 
 [node name="Area4" type="Area" parent="." groups=["focus_areas"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.5209, 1.6556, -3.28292 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.5209, 6.31261, 2.1235 )
 script = ExtResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area4"]
+transform = Transform( 1.38893, 0, 0, 0, -4.37114e-08, -1, 0, 1.28068, -5.59802e-08, 0, -1.12354, -0.175122 )
 shape = SubResource( 1 )
 
 [node name="Area6" type="Area" parent="." groups=["focus_areas"]]
-transform = Transform( 2.32172, 0, 0, 0, -1.01486e-07, -2.32172, 0, 2.32172, -1.01486e-07, 7.11252, 5.05945, 7.62615 )
+transform = Transform( 0.766227, 0, 0, 0, 0.521068, 0, 0, 0, 0.766227, 3.36687, 4.19719, -0.543482 )
 script = ExtResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area6"]
-transform = Transform( 0.308101, 0, 0, 0, 0.308101, 0, 0, 0, 0.308101, 0, 0, 0.136386 )
+transform = Transform( 0.840817, 0, 0, 0, 0.308101, 0, 0, 0, 0.669532, -1.95577, -3.05789, 0.136387 )
 shape = SubResource( 1 )
 
 [node name="Area8" type="Area" parent="." groups=["focus_areas"]]
-transform = Transform( 2.32172, 0, 0, 0, -1.01486e-07, -2.32172, 0, 2.32172, -1.01486e-07, -0.0329335, 3.8882, 16.5741 )
+transform = Transform( 1.84179, 0, 0, 0, -1.39202, -1.20602, 0, 1.20602, -1.39202, -1.03545, 8.64016, 11.5438 )
 script = ExtResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area8"]
-transform = Transform( 1, 0, 0, 0, 0.686377, 0.727246, 0, -0.727246, 0.686377, 0, -1.70625, -2.9886 )
+transform = Transform( 0.798274, 0, 0, 0, 0.222183, 0.00263331, 0, -0.00263331, 0.222183, -2.01388, 2.70757, 3.11081 )
+shape = SubResource( 1 )
+
+[node name="Area11" type="Area" parent="." groups=["focus_areas"]]
+transform = Transform( 1.84179, 0, 0, 0, -1.39202, -1.20602, 0, 1.20602, -1.39202, -1.03545, 8.64016, 11.5438 )
+script = ExtResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area11"]
+transform = Transform( 0.195649, 0, 0, 0, 0.139656, 0.172825, 0, -0.172825, 0.139656, -5.93027, -1.76195, 6.57684 )
 shape = SubResource( 1 )
 
 [node name="Area7" type="Area" parent="." groups=["focus_areas"]]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.52589, 12.531, 6.21336 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.52589, 12.531, -1.48215 )
 script = ExtResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area7"]
 shape = SubResource( 1 )
 
 [node name="door" parent="." instance=ExtResource( 6 )]
-transform = Transform( -1.38501e-07, 0, 3.16854, 0, 3.16854, 0, -3.16854, 0, -1.38501e-07, 11.8952, 0.43693, 16.3931 )
-spawn_point_path = NodePath("../Position3D")
+transform = Transform( -1.38501e-07, 0, 3.16854, 0, 3.16854, 0, -3.16854, 0, -1.38501e-07, 6.56323, 0.32009, 7.77072 )
+spawn_point_path = NodePath("../quarto_entrada2")
 
 [node name="door2" parent="." instance=ExtResource( 6 )]
-transform = Transform( -1.38501e-07, 0, 3.16854, 0, 3.16854, 0, -3.16854, 0, -1.38501e-07, 11.8952, 0.43693, 7.93896 )
-spawn_point_path = NodePath("../Position3D")
+transform = Transform( -1.38501e-07, 0, 3.16854, 0, 3.16854, 0, -3.16854, 0, -1.38501e-07, 6.56323, 0.32009, -0.683421 )
+spawn_point_path = NodePath("../quarto_entrada")
 
-[node name="Position3D" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44.1322, 0.856847, -6.10019 )
+[node name="door3" parent="." instance=ExtResource( 6 )]
+transform = Transform( -1.38501e-07, 0, 3.16854, 0, 3.16854, 0, -3.16854, 0, -1.38501e-07, -15.0651, 0.383406, 8.03772 )
+spawn_point_path = NodePath("../quarto_entrada")
 
-[node name="Spatial" parent="." instance=ExtResource( 7 )]
-transform = Transform( 5.55507, 0, 0, 0, 5.55507, 0, 0, 0, 5.55507, -4.90882, -5.61804, -8.74216 )
+[node name="door4" parent="." instance=ExtResource( 6 )]
+transform = Transform( -1.38501e-07, 0, 3.16854, 0, 3.16854, 0, -3.16854, 0, -1.38501e-07, -15.0651, 0.383406, -0.41642 )
+spawn_point_path = NodePath("../quarto_entrada2")
+
+[node name="door5" parent="." instance=ExtResource( 6 )]
+transform = Transform( -1.68649e-07, 0, 3.85825, 0, 3.85825, 0, -3.85825, 0, -1.68649e-07, -51.0288, -0.0327708, -0.41642 )
+spawn_point_path = NodePath("../hall_entrada")
+
+[node name="Hall" parent="." instance=ExtResource( 7 )]
+transform = Transform( 5.55507, 0, 0, 0, 5.55507, 0, 0, 0, 5.55507, -4.90882, 5.41223, -4.74216 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
@@ -114,31 +129,63 @@ light_energy = 0.3
 light_indirect_energy = 5.0
 light_specular = 1.0
 
-[node name="correr_entrada" type="Position3D" parent="."]
-transform = Transform( -0.985485, -0.169762, 0, 0.169762, -0.985485, 0, 0, 0, 1, -3.79659, 0.0780201, -42.3894 )
+[node name="corredor_entrada" type="Position3D" parent="."]
+transform = Transform( -0.985485, -0.169762, 0, 0.169762, -0.985485, 0, 0, 0, 1, -3.79659, 0.0780201, -64.7566 )
+
+[node name="corredor_saida" type="Position3D" parent="."]
+transform = Transform( -0.985485, -0.169762, 0, 0.169762, -0.985485, 0, 0, 0, 1, -3.79659, 0.0780201, -90.1181 )
 
 [node name="Area2" parent="." instance=ExtResource( 6 )]
-transform = Transform( 4.29377, 0, 0.179662, 0, 4.29752, 0, -0.138567, 0, 3.31162, -43.8619, 0.129737, -7.72996 )
-spawn_point_path = NodePath("../correr_entrada")
+transform = Transform( 4.29377, 0, 0.179662, 0, 4.58067, 0, -0.138567, 0, 3.31162, -43.8619, -0.0955175, -7.72996 )
+spawn_point_path = NodePath("../corredor_entrada")
 
+<<<<<<< HEAD
 [node name="Enemy" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.23698, 1.85607, 8.70492 )
 velocidade = 10.0
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enemy"]
 stream = ExtResource( 9 )
+=======
+[node name="Area3" parent="." instance=ExtResource( 6 )]
+transform = Transform( 4.29377, 0, 0.179662, 0, 4.29752, 0, -0.138567, 0, 3.31162, -43.8619, 0.129737, 12.6291 )
+spawn_point_path = NodePath("../corredor_saida")
+
+[node name="Area9" parent="." instance=ExtResource( 6 )]
+transform = Transform( 4.29377, 0, 0.179662, 0, 4.29752, 0, -0.138567, 0, 3.31162, -3.11497, -0.0279833, -63.9691 )
+spawn_point_path = NodePath("../corredor_saida")
+
+[node name="Area10" parent="." instance=ExtResource( 6 )]
+transform = Transform( 4.55253, 0, 0.190489, 0, 4.5565, 0, -0.146917, 0, 3.51119, -3.71114, -0.0315838, -91.0513 )
+spawn_point_path = NodePath("../corredor_saida")
+
+[node name="3DCharacter2" parent="." instance=ExtResource( 8 )]
+transform = Transform( 0.611707, 0, 0, 0, 0.611707, 0, 0, 0, 0.611707, 1.30629, 1.42435, -1.03632 )
+
+[node name="quarto_entrada" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44.1322, 0.856847, -6.10019 )
+
+[node name="quarto_entrada2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50.2016, 0.480017, -0.385407 )
+
+[node name="hall_entrada" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.97341, 1.1168, -0.61005 )
+
+[node name="quarto_saida" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44.1322, 0.856847, 12.0468 )
+>>>>>>> b50de89dfd6da1785fc52841fb0a6e69225e0da4
 
 [connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="Area" method="_on_Area_body_exited"]
 [connection signal="body_entered" from="Area5" to="Area5" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area5" to="Area5" method="_on_Area_body_exited"]
-[connection signal="body_entered" from="Area3" to="Area3" method="_on_Area_body_entered"]
-[connection signal="body_exited" from="Area3" to="Area3" method="_on_Area_body_exited"]
 [connection signal="body_entered" from="Area4" to="Area4" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area4" to="Area4" method="_on_Area_body_exited"]
 [connection signal="body_entered" from="Area6" to="Area6" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area6" to="Area6" method="_on_Area_body_exited"]
 [connection signal="body_entered" from="Area8" to="Area8" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area8" to="Area8" method="_on_Area_body_exited"]
+[connection signal="body_entered" from="Area11" to="Area11" method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Area11" to="Area11" method="_on_Area_body_exited"]
 [connection signal="body_entered" from="Area7" to="Area7" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area7" to="Area7" method="_on_Area_body_exited"]
