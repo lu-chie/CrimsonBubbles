@@ -13,9 +13,11 @@ func _ready():
 
 
 func _process(delta):
-	# toda a logica ta sendo feita la em contoller
-	enemy_controller.navegate(enemy_controller.player)
-	print(enemy_controller.nav_atual)
+	# toda a logica ta sendo feita la em contoller	
+	if enemy_controller.is_player_in == false:
+		enemy_controller.search()
+	else:
+		enemy_controller.navegate(enemy_controller.player)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

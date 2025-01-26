@@ -7,13 +7,14 @@ export(NodePath) var spawn_point_path
 # var b = "text"
 
 func _on_Area_body_entered(body):
-	if body.name == "Player":
+	if body is KinematicBody and (body.name == "Player" or body.name == "Enemy"):
 		move_player_to_spawn(body)
 	
 	pass # Replace with function body.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	add_to_group("doors")
 	pass # Replace with function body.
 
 func move_player_to_spawn(player):

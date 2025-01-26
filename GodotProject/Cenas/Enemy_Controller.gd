@@ -2,6 +2,8 @@ extends Node
 
 # Chamando o kinematic body que é o model
 onready var model = $".."
+onready var navmesh = $"../NavigationAgent"
+onready var ray = $"../RayCast"
 
 # Velocidades
 export var walk_speed: float = 5.0  # Velocidade ao caminhar
@@ -10,9 +12,12 @@ export var run_speed: float = 10.0  # Velocidade ao correr
 var path = [] 
 var target_position = Vector3()
 var is_player_in : bool = false
-onready var navmesh = $"../NavigationAgent"
 var nav_atual = null
 var player = null
+var last_location = null
+var delta_time : float = 0.0
+var is_searching: bool = true
+var porta = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,13 +32,44 @@ func _ready():
 	if nav_mesh_instances:
 		for instance in nav_mesh_instances:
 			if instance:
-				print("achou: "+ instance.name)
 				nav_atual = instance  # Armazena a NavMesh encontrada
 				break
 			else:
 				print("SemNavMesh")
 	else:
 		print("Nenhuma NavMesh encontrada na cena.")
+
+func _process(delta):
+	delta_time = delta  # Salva o delta globalmente
+
+func search():
+	if is_player_in == false:
+		if is_searching:
+			model.rotate_y(model.speed * delta_time)
+			ray.force_raycast_update()
+			
+			if ray.is_colliding():
+				var collider = ray.get_collider()
+				
+				if collider in get_tree().get_nodes_in_group("doors"):
+					is_searching = false
+					porta = collider
+		else:
+			if porta:
+				print("porta")
+				navmesh.set_target_location(porta.global_transform.origin)
+				
+				var next_location = navmesh.get_next_location()
+				var direction = (next_location - model.global_transform.origin).normalized()
+				
+				model.velocity = direction * walk_speed
+				
+				model.move_and_slide(model.velocity, Vector3.UP)
+					
+				if model.global_transform.origin.distance_to(porta.global_transform.origin) < 1.0:
+					porta = null
+	else:
+		pass
 
 
 func find_nav_mesh_instances():
@@ -82,4 +118,6 @@ func _on_Area_body_exited(body):
 	if body is KinematicBody and body.name == "Player":
 		is_player_in = false
 		player = body
+		last_location = player.global_transform.origin
+		search()
 		print("player saiu")
