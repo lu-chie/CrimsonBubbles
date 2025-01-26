@@ -147,7 +147,7 @@ transform = Transform( 4.55253, 0, 0.190489, 0, 4.5565, 0, -0.146917, 0, 3.51119
 spawn_point_path = NodePath("../corredor_saida")
 
 [node name="3DCharacter2" parent="." instance=ExtResource( 8 )]
-transform = Transform( 0.611707, 0, 0, 0, 0.611707, 0, 0, 0, 0.611707, 1.30629, 1.42435, -1.03632 )
+transform = Transform( 0.611707, 0, 0, 0, 0.611707, 0, 0, 0, 0.611707, 1.30629, 1.7428, -1.03632 )
 
 [node name="quarto_entrada" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44.1322, 0.856847, -6.10019 )

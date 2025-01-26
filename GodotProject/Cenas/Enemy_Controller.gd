@@ -12,10 +12,15 @@ var target_position = Vector3()
 var is_player_in : bool = false
 onready var navmesh = $"../NavigationAgent"
 var nav_atual = null
-var player : KinematicBody
+var player = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	# Conecta o sinal body_entered à função _on_Area_body_entered
+	connect("body_entered", self, "_on_Area_body_entered")
+	# Conecta o sinal body_exited à função _on_Area_body_exited
+	connect("body_exited", self, "_on_Area_body_exited")
 	
 	var nav_mesh_instances = find_nav_mesh_instances()
 	
@@ -50,31 +55,31 @@ func find_nav_mesh_instances():
 
 # Função de update movement que é chamada constantemente. Todo movimento é processado aqui.
 # Feito assim para separar responsabilidades:
-func navegate(body: KinematicBody):
-	if nav_atual and body:
+func navegate(player: KinematicBody):
+	
+	if nav_atual and player:
 		# Define o destino usando o método correto
-		navmesh.set_target_location(body.global_transform.origin)
+		navmesh.set_target_location(player.global_transform.origin)
+		var next_location = navmesh.get_next_location()
+		var direction = (next_location - model.global_transform.origin).normalized()
 		
-		# Enquanto o agente estiver navegando
-		if not navmesh.is_navigation_finished():
-			# Obtém a próxima posição do caminho
-			var next_position = navmesh.get_next_path_position()
-			if next_position:
-				var direction = (next_position - model.global_transform.origin).normalized()
-				model.velocity = direction * walk_speed
+		#var direction = (player.global_transform.origin).normalized()		
+		model.velocity = direction * walk_speed
 			
+		if is_player_in == true:
+			# Atualiza o destino continuamente
+			navmesh.set_target_location(player.global_transform.origin)
 			# Move o personagem
 			model.move_and_slide(model.velocity, Vector3.UP)
-
 
 func _on_Area_body_entered(body):
 	if body is KinematicBody and body.name == "Player":
 		is_player_in = true
 		player = body
-		
-		# Configura o destino
-		target_position = body.global_transform.origin
-		navmesh.set_target_location(body.global_transform.origin)
-		
-		# Inicia navegação
-		navegate(player)
+		print("player entrou")
+
+func _on_Area_body_exited(body):
+	if body is KinematicBody and body.name == "Player":
+		is_player_in = false
+		player = body
+		print("player saiu")
