@@ -1,6 +1,6 @@
 extends Spatial
 
-onready var camera = $Camera
+onready var camera = $SpringArm/Camera
 onready var cam_collider = $SpringArm
 
 export(float) var max_length = 20.0

@@ -7,28 +7,74 @@ onready var model = $".."
 export var walk_speed: float = 5.0  # Velocidade ao caminhar
 export var run_speed: float = 10.0  # Velocidade ao correr
 
+var path = [] 
+var target_position = Vector3()
+var is_player_in : bool = false
+onready var navmesh = $"../NavigationAgent"
+var nav_atual = null
+var player : KinematicBody
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	
+	var nav_mesh_instances = find_nav_mesh_instances()
+	
+	if nav_mesh_instances:
+		for instance in nav_mesh_instances:
+			if instance:
+				print("achou: "+ instance.name)
+				nav_atual = instance  # Armazena a NavMesh encontrada
+				break
+			else:
+				print("SemNavMesh")
+	else:
+		print("Nenhuma NavMesh encontrada na cena.")
+
+
+func find_nav_mesh_instances():
+	
+	var instances = []
+	var nodes_to_check = [get_tree().get_root()] 
+	
+	while nodes_to_check:
+		var current_node = nodes_to_check.pop_back()
+		
+		if current_node is NavigationMeshInstance:
+			instances.append(current_node)
+		
+		for child in current_node.get_children():
+			nodes_to_check.append(child)
+	
+	return instances
+	
 
 # Função de update movement que é chamada constantemente. Todo movimento é processado aqui.
 # Feito assim para separar responsabilidades:
-func update_movement(delta):
-	# Reseta a velocidade horizontal
-	model.velocity.x = 0
-	model.velocity.z = 0
+func navegate(body: KinematicBody):
+	if nav_atual and body:
+		# Define o destino usando o método correto
+		navmesh.set_target_location(body.global_transform.origin)
+		
+		# Enquanto o agente estiver navegando
+		if not navmesh.is_navigation_finished():
+			# Obtém a próxima posição do caminho
+			var next_position = navmesh.get_next_path_position()
+			if next_position:
+				var direction = (next_position - model.global_transform.origin).normalized()
+				model.velocity = direction * walk_speed
+			
+			# Move o personagem
+			model.move_and_slide(model.velocity, Vector3.UP)
 
 
-
-	# Aplica a gravidade se o personagem não estiver no chão
-	if not model.is_on_floor():
-		model.velocity.y += model.gravity * delta
-	else:
-		model.velocity.y = 0
-
-	# Move o personagem
-	model.move_and_slide(model.velocity, Vector3.UP)
-	
-func is_on_area():
-	
-	pass
+func _on_Area_body_entered(body):
+	if body is KinematicBody and body.name == "Player":
+		is_player_in = true
+		player = body
+		
+		# Configura o destino
+		target_position = body.global_transform.origin
+		navmesh.set_target_location(body.global_transform.origin)
+		
+		# Inicia navegação
+		navegate(player)

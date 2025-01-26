@@ -2,7 +2,7 @@ extends KinematicBody
 
 
 # referenciando os scripts que compoem a arquitetura mvc da personagem
-onready var controller = $Controller
+onready var enemy_controller = $Controller
 onready var view = $View
 
 export var speed: float = 15.0  # mostra a velocidade la no inspector, direita da viewport
@@ -16,7 +16,7 @@ func _ready():
 
 func _physics_process(delta):
 	# toda a logica ta sendo feita la em contoller
-	controller.update_movement(delta)
+	enemy_controller.navegate(delta)
 
 
 
