@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/vampira_hair.obj-a47199c5b6b7ed00b9b05e2a438d8e0b.mesh"
+
+[deps]
+
+files=[ "res://.import/vampira_hair.obj-a47199c5b6b7ed00b9b05e2a438d8e0b.mesh" ]
+
+source_file="res://Assets/vampyr/vampira_hair.obj"
+dest_files=[ "res://.import/vampira_hair.obj-a47199c5b6b7ed00b9b05e2a438d8e0b.mesh", "res://.import/vampira_hair.obj-a47199c5b6b7ed00b9b05e2a438d8e0b.mesh" ]
+
+[params]
+
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh_flags=4286
+generate_tangents=true
+vertex_cache_optimization=true
+octahedral_compression=true
