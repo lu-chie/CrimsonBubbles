@@ -20,6 +20,6 @@ margin = 0.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49502, -5.08995, -2.97568 )
 projection = 1
 current = true
-size = 18.0
+size = 20.0
 near = 0.01
 far = 200.0
